@@ -1,0 +1,137 @@
+/* Global Reset */
+html, body {
+    height: 100%;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Footer Styles */
+footer {
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    display: flex;
+    width: 100%;
+    height: 300px;
+}
+
+/* SVG Decoration */
+svg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    transform: scaleY(3) scaleX(2.25);
+    transform-origin: bottom;
+    box-sizing: border-box;
+    display: block;
+    pointer-events: none;
+}
+
+/* Footer Section */
+section {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    gap: 30px;
+    padding-bottom: 80px;
+    padding-left: 60px;
+    width: 100%;
+}
+
+@media (width > 420px) {
+    section {
+        align-items: center;
+        padding-left: 0;
+        gap: 20px;
+    }
+
+    .links {
+        gap: 20px;
+    }
+}
+
+/* Navigation and Social Icons */
+ul {
+    display: flex;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.socials {
+    gap: 20px;
+    cursor: pointer;
+}
+
+.socials a {
+    font-size: 24px;
+}
+
+.links {
+    gap: 10px;
+    cursor: pointer;
+}
+
+.legal {
+    font-size: 12px;
+    margin: 0;
+}
+
+/* Hero Section */
+.hero {
+    background: linear-gradient(to right, #3a7bd5, #00d2ff);
+    color: white;
+}
+
+/* Feature Icons */
+.features i {
+    color: #007bff;
+}
+
+/* Category Cards */
+.categories .card:hover {
+    transform: translateY(-5px);
+    transition: 0.3s ease-in-out;
+}
+.main-header .header-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1px 10px; /* reduce padding */
+  top: 0;
+}
+
+.main-header h1 {
+  margin: 0;
+  font-size: 24px; /* reduce text size */
+  text-align: left;
+}
+header{
+    height: 70px;
+}
+.must-lg img {
+  max-height: 100px; /* control image height */
+  width: auto;
+  margin-top: -40px;
+}
+.nembo-lg img{
+  max-height: 70px; /* control image height */
+  width: auto;
+  margin-top: -8px;
+}
+
+@media (max-width: 768px) {
+  .main-header .header-content {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .main-header h1 {
+    text-align: center;
+    margin-bottom: 10px;
+  }
+}
+
