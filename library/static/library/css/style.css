@@ -3,6 +3,7 @@ html, body {
     height: 100%;
     margin: 0;
     padding: 0;
+    font-family: Arial, Helvetica, sans-serif;
 }
 
 body {
@@ -57,7 +58,7 @@ footer {
 .legal {
     margin: 0;
     font-size: 12px;
-    color: rgba(255, 255, 255, 0.7);
+    color: rgba(0, 0, 0, 0.998);
 }
 
 /* Responsive Adjustments */
@@ -84,7 +85,10 @@ footer {
 
 /* Category Cards */
 .categories .card {
-    transition: transform 0.3s ease-in-out;
+    transition: transform 0.5s ease-in-out;
+    border-radius: 20px;
+    height: 100px;
+    box-shadow: black;
 }
 
 .categories .card:hover {
@@ -139,3 +143,53 @@ header {
         max-height: 80px; /* Adjust height for smaller screens */
     }
 }
+.btn-login {
+  width: 70px;
+  height: 30px;
+  background: linear-gradient(to top, #00154c, #12376e, #23487f);
+  color: #fff;
+  border-radius: 50px;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  position: relative;
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.5);
+  overflow: hidden;
+  margin-right: 25px;
+}
+
+.btn-login span {
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  transition: top 0.5s;
+}
+
+.btn-login-text-one {
+  position: absolute;
+  width: 100%;
+  top: 50%;
+  left: 0;
+  transform: translateY(-50%);
+}
+
+.btn-login-text-two {
+  position: absolute;
+  width: 100%;
+  top: 150%;
+  left: 0;
+  transform: translateY(-50%);
+}
+
+.btn-login:hover .btn-login-text-one {
+  top: -100%;
+}
+
+.btn-login:hover .btn-login-text-two {
+  top: 50%;
+}
+
+.btn-login a{
+    color: white;
+}
+

@@ -31,7 +31,7 @@
     <!-- Navigation -->
     <nav class="navbar sticky-top navbar-expand-lg navbar-light bg-primary mb-0">
         <div class="container-fluid">
-            <a class="navbar-brand" href="#">eLibrary</a>
+            <strong><a class="navbar-brand" href="/">eLibrary</a></strong>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav">
@@ -41,6 +41,14 @@
                     <li class="nav-item"><a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a></li>
                 </ul>
             </div>
+            <div>
+                <button class="btn-login">
+                    <a href="{% url 'login' %}">
+                        <span class="btn-login-text-one">Login</span>
+                        <span class="btn-login-text-two">Welcome</span>
+                    </a>
+                </button>
+            </div>
         </div>
     </nav>
 
@@ -49,7 +57,7 @@
         <!-- Hero Section -->
         <section class="hero bg-light text-dark text-center py-5">
             <div class="container">
-                <h1 class="display-4 fw-bold">Welcome to eLibrary</h1>
+                <h1 class="display-4 fw-bold">MUST Library Management System</h1>
                 <p class="lead">Access thousands of books, journals, and educational content at your fingertips.</p>
                 <a href="#" class="btn btn-primary btn-lg mt-3">Get Started</a>
             </div>
@@ -72,7 +80,7 @@
             <div class="container">
                 <h2 class="mb-4 fw-bold">Explore Categories</h2>
                 <div class="row g-4">
-                    <div class="col-md-3"><div class="card h-100 shadow-sm"><div class="card-body"><h5 class="card-title">Science</h5><p class="card-text">Discover scientific books and research.</p></div></div></div>
+                    <div class="col-md-3"><div class="card h-100 shadow-sm"><div class="card-body"><h5 class="card-title">Science</h5><p class="card-text">Discover scientific books and research for innovations.</p></div></div></div>
                     <div class="col-md-3"><div class="card h-100 shadow-sm"><div class="card-body"><h5 class="card-title">Technology</h5><p class="card-text">Stay updated with the latest tech trends.</p></div></div></div>
                     <div class="col-md-3"><div class="card h-100 shadow-sm"><div class="card-body"><h5 class="card-title">History</h5><p class="card-text">Explore historical events and figures.</p></div></div></div>
                     <div class="col-md-3"><div class="card h-100 shadow-sm"><div class="card-body"><h5 class="card-title">Fiction</h5><p class="card-text">Dive into novels, stories, and more.</p></div></div></div>
@@ -125,7 +133,7 @@
                     <li><a>Team</a></li>
                     <li><a>Contact</a></li>
                 </ul>
-                <p class="legal">&copy; 2025 All rights reserved</p>
+                <p class="legal">Developed by BillyTechnologies &copy; 2025 All rights reserved</p>
             </section>
         </div>
     </footer>
