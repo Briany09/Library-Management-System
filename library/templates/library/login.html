@@ -148,7 +148,7 @@ html, body {
 
 .agreement a {
   text-decoration: none;
-  color: #0099ff;
+  color: #010609;
   font-size: 9px;
 }
 .btn-login {
@@ -181,25 +181,30 @@ html, body {
     color: black;
     font-size: 14px;
   }
+  .form-login .alert{
+    color: red;
+    margin-top: 8px;
+    margin-left: 40px;
+  }
 </style>
 <body>
   <!-- Login Form --> 
 <div class="container">
     <div class="heading">Sign In</div>
-    {% if error %}
-      <div class="alert alert-danger"> {{error}} </div>
-    {% endif %}
     <form method="post" class="form-login">
       {% csrf_token %}
       <input required="" class="input" type="username" name="username" id="username" placeholder="username">
       <input required="" class="input" type="password" name="password" id="password" placeholder="Password">
       <span class="forgot-password"><a href="#">Forgot Password ?</a></span>
+      {% if error %}
+        <div class="alert alert-danger"> {{error}} </div>
+      {% endif %}
       <button type="submit" class="btn-login">
         <span class="btn-login-text-one ">Login</span>
         </button>
     </form>
     <div class="registration-link">
-          <span>Don't have an account? <a href="#">Register here</a></span>
+          <span>Don't have an account? <a href="{% url 'register' %}">Register here</a></span>
       </div>
       <span class="agreement"><a href="#">Learn user licence agreement</a></span>
   </div>
