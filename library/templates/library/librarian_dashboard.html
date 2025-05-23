@@ -1,0 +1,286 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+  <meta charset="UTF-8">
+  <title> Admin Dashboard </title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  {% comment %} <link rel="stylesheet" href="{% static 'css/librarian.css' %}" /> {% endcomment %}
+    <link rel="stylesheet" href="{% static 'library/css/librarian.css' %}" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css"
+    integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous" />
+  <!-- Boxicons CDN Link -->
+  <link rel="stylesheet" href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css'>
+</head>
+
+<body>
+  <div class="sidebar">
+    <div class="logo-details">
+      <span class="logo_name">Profile</span>
+    </div>
+    <ul class="nav-links">
+      <li>
+        <a href="#" class="active">
+          <i class='bx bx-grid-alt'></i>
+          <span class="links_name">Dashboard</span>
+        </a>
+      </li>
+      <li>
+        {% comment %} <a href="{% url 'projects' %}"> {% endcomment %}
+          <i class='bx bx-box'></i>
+          <span class="links_name">Projects</span>
+        </a>
+      </li>
+      <li>
+        {% comment %} <a href="{% url 'dashboard' %}"> {% endcomment %}
+          <i class='bx bx-user'></i>
+          <span class="links_name">Contacts</span>
+        </a>
+      </li>
+      <li>
+        <a href="#">
+          <i class='bx bx-message'></i>
+          <span class="links_name">Messages</span>
+        </a>
+      </li>
+      <li>
+        <a href="#">
+          <i class='bx bx-cog'></i>
+          <span class="links_name">Setting</span>
+        </a>
+      </li>
+      <li class="log_out">
+        {% comment %} <a href="{% url 'logout' %}?next={% url 'login' %}"> {% endcomment %}
+          <i class='bx bx-log-out'></i>
+          <span class="links_name">Log out</span>
+        </a>
+      </li>
+    </ul>
+  </div>
+  <section class="home-section">
+    <nav>
+      <div class="sidebar-button">
+        <i class='bx bx-menu sidebarBtn'></i>
+        <span class="dashboard">Dashboard</span>
+      </div>
+      {% comment %} <div class="search-box">
+        <input type="text" placeholder="Search...">
+        <i class='bx bx-search'></i>
+      </div> {% endcomment %}
+      <div class="profile-details">
+        <img src="/static/images/logo-1.png" alt="profile pic" style="border-radius: 20px;">
+        <span class="admin_name"> {{user.username}}</span>
+        <i class='bx bx-chevron-down'></i>
+      </div>
+    </nav>
+    <div class="home-content">
+      <div class="overview-boxes">
+        <div class="box">
+          <div class="right-side">
+            <div class="box-topic">Total Visitors</div>
+            <div class="number">40,876</div>
+            <div class="indicator">
+              <i class='bx bx-up-arrow-alt'></i>
+              <span class="text">Up from yesterday</span>
+            </div>
+          </div>
+        </div>
+        <div class="box">
+          <div class="right-side">
+            <div class="box-topic">Hiring Request</div>
+            <div class="number">38,876</div>
+            <div class="indicator">
+              <i class='bx bx-up-arrow-alt'></i>
+              <span class="text">Up from yesterday</span>
+            </div>
+          </div>
+        </div>
+        <div class="box">
+          <div class="right-side">
+            <div class="box-topic">Projects Completed</div>
+            <div class="number">$12,876</div>
+            <div class="indicator">
+              <i class='bx bx-up-arrow-alt'></i>
+              <span class="text">Up from yesterday</span>
+            </div>
+          </div>
+        </div>
+        <div class="box">
+          <div class="right-side">
+            <div class="box-topic">Pending Projects</div>
+            <div class="number">11,086</div>
+            <div class="indicator">
+              <i class='bx bx-down-arrow-alt down'></i>
+              <span class="text">Down From Today</span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="sales-boxes">
+        <div class="recent-sales box">
+          <div class="title">Contact Messages</div>
+          <div class="sales-details">
+            <table>
+              <thead>
+                <tr>
+                  <th>ID</th>
+                  <th>Name</th>
+                  <th>Email</th>
+                  <th>Message</th>
+                  <th>Actions</th>
+                </tr>
+              </thead>
+              <tbody>
+                {% for contact in contacts %}
+                <tr>
+                  <td>{{ contact.id }}</td>
+                  <td>{{ contact.name }}</td>
+                  <td>{{ contact.email }}</td>
+                  <td>{{ contact.message }}</td>
+                  <td>
+                    <!-- <a href="{% url 'edit_contact' contact.id %}" class="btn-edit">Edit</a> -->
+                    <!-- <button type="button" class="btn btn-success btn-sm" style="border-radius: 10px;" data-toggle="modal" data-target="#editModal{{ contact.id }}">
+                      Edit
+                    </button> -->
+
+                    <button type="button" class="btn btn-primary btn-sm" style="border-radius: 10px;"
+                      data-toggle="modal" data-target="#editModal{{ contact.id }}">
+                      Edit
+                    </button>
+
+                    <!-- Edit Modal (Unique ID for Each Contact) -->
+                    <div class="modal fade" id="editModal{{ contact.id }}" tabindex="-1" data-backdrop="static"
+                      aria-labelledby="editModalLabel{{ contact.id }}" aria-hidden="true">
+                      <div class="modal-dialog modal-dialog-centered">
+                        <div class="modal-content">
+                          <div class="modal-header">
+                            <h5 class="modal-title" id="editModalLabel{{ contact.id }}">Edit Contact</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                              <span aria-hidden="true">&times;</span>
+                            </button>
+                          </div>
+
+                          <form method="post" action="{% url 'edit_contact' contact.id %}">
+                            {% csrf_token %}
+                            <div class="modal-body">
+                              <div class="form-group">
+                                <label for="edit-name-{{ contact.id }}" class="col-form-label">Name:</label>
+                                <input type="text" class="form-control" id="edit-name-{{ contact.id }}" name="name"
+                                  value="{{ contact.name }}" required>
+                              </div>
+                              <div class="form-group">
+                                <label for="edit-email-{{ contact.id }}" class="col-form-label">Email:</label>
+                                <input type="email" class="form-control" id="edit-email-{{ contact.id }}" name="email"
+                                  value="{{ contact.email }}" required>
+                              </div>
+                              <div class="form-group">
+                                <label for="edit-message-{{ contact.id }}" class="col-form-label">Message:</label>
+                                <textarea class="form-control" id="edit-message-{{ contact.id }}" name="message"
+                                  required>{{ contact.message }}</textarea>
+                              </div>
+                            </div>
+
+                            <div class="modal-footer">
+                              <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
+                              <button type="submit" class="btn btn-success">Save Changes</button>
+                            </div>
+                          </form>
+                        </div>
+                      </div>
+                    </div>
+
+
+                    <!-- Button trigger modal (Unique ID for each contact) -->
+                    <button type="button" class="btn btn-danger btn-sm" style="border-radius: 10px;" data-toggle="modal"
+                      data-target="#deleteModal{{ contact.id }}">
+                      Delete
+                    </button>
+
+                    <!-- Modal (Unique ID for each contact) -->
+                    <div class="modal fade" id="deleteModal{{ contact.id }}" data-backdrop="static"
+                      data-keyboard="false" tabindex="-1" aria-labelledby="deleteModalLabel{{ contact.id }}"
+                      aria-hidden="true">
+                      <div class="modal-dialog modal-dialog-centered">
+                        <div class="modal-content">
+                          <div class="modal-header">
+                            <h5 class="modal-title" id="deleteModalLabel{{ contact.id }}">Confirm Delete</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                              <span aria-hidden="true">&times;</span>
+                            </button>
+                          </div>
+                          <div class="modal-body">
+                            <h4>Are you sure you want to delete this contact?</h4>
+                            <p><strong>{{ contact.name }}</strong> - {{ contact.message }}</p>
+                          </div>
+                          <div class="modal-footer">
+                            <button type="button" class="btn btn-primary" data-dismiss="modal">Cancel</button>
+                            <form method="post" action="{% url 'delete_contact' contact.id %}">
+                              {% csrf_token %}
+                              <button type="submit" class="btn btn-danger">Confirm Delete</button>
+                            </form>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </td>
+                </tr>
+                {% endfor %}
+              </tbody>
+            </table>
+
+          </div>
+          <div class="button">
+            <a href="#">See All</a>
+          </div>
+        </div>
+        <div class="top-sales box">
+          <div class="title">Top Invited Projects</div>
+          <ul class="top-sales-details">
+            <li>
+              <a href="#">
+                <img src="images/sunglasses.jpg" alt="">
+                <span class="product">Chatbot</span>
+              </a>
+              {% comment %} <span class="price">$1107</span> {% endcomment %}
+            </li>
+            <li>
+              <a href="#">
+                <img src="images/jeans.jpg" alt="">
+                <span class="product">Vehicle Speed tracker </span>
+              </a>
+              {% comment %} <span class="price">$1567</span> {% endcomment %}
+            </li>
+            <li>
+              <a href="#">
+                <img src="images/nike.jpg" alt="">
+                <span class="product">Social Media Chat App</span>
+              </a>
+              {% comment %} <span class="price">$1234</span> {% endcomment %}
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+    integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+    crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx"
+    crossorigin="anonymous"></script>
+  <script>
+    let sidebar = document.querySelector(".sidebar");
+    let sidebarBtn = document.querySelector(".sidebarBtn");
+    sidebarBtn.onclick = function () {
+      sidebar.classList.toggle("active");
+      if (sidebar.classList.contains("active")) {
+        sidebarBtn.classList.replace("bx-menu", "bx-menu-alt-right");
+      } else
+        sidebarBtn.classList.replace("bx-menu-alt-right", "bx-menu");
+    }
+  </script>
+</body>
+
+</html>
