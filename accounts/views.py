@@ -1,5 +1,5 @@
 from django.shortcuts import render, redirect
-from django.contrib.auth import authenticate, login
+from django.contrib.auth import authenticate, login, logout
 from django.http import HttpResponseRedirect
 from django.urls import reverse
 from django.contrib.auth.models import User, Group
@@ -14,7 +14,7 @@ def login_view(request):
         if user is not None:
             login(request, user)
             if user.groups.filter(name='Students').exists():
-                return redirect('dashboard') # Redirect to student dashboard after login
+                return redirect('student_dashboard') # Redirect to student dashboard after login
             else:
                 user.groups.filter(name='Librarians').exists()
                 return redirect('librarian_dashboard')
@@ -54,3 +54,7 @@ def register_view(request):
         return redirect('login') #Redirect to login after registration
     
     return render(request, 'accounts/register.html')
+
+def logout_view(request):
+    logout(request)
+    return redirect('home') 

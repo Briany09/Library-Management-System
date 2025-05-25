@@ -5,20 +5,29 @@
 
 <head>
   <meta charset="UTF-8">
-  <title> Admin Dashboard </title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  {% comment %} <link rel="stylesheet" href="{% static 'css/librarian.css' %}" /> {% endcomment %}
-    <link rel="stylesheet" href="{% static 'library/css/librarian.css' %}" />
+  <title> Librarian Dashboard </title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">    
+  <link rel="stylesheet" href="{% static 'library/css/librarian.css' %}" />
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css"
     integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous" />
   <!-- Boxicons CDN Link -->
   <link rel="stylesheet" href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css'>
 </head>
 
+<style>
+  html, body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, Helvetica, sans-serif;
+}
+</style>
+
 <body>
   <div class="sidebar">
     <div class="logo-details">
-      <span class="logo_name">Profile</span>
+      {% comment %} <span class="logo_name">Profile</span> {% endcomment %}
     </div>
     <ul class="nav-links">
       <li>
@@ -28,31 +37,37 @@
         </a>
       </li>
       <li>
-        {% comment %} <a href="{% url 'projects' %}"> {% endcomment %}
+        <a href="#">
           <i class='bx bx-box'></i>
-          <span class="links_name">Projects</span>
+          <span class="links_name">Manage Books</span>
         </a>
       </li>
       <li>
-        {% comment %} <a href="{% url 'dashboard' %}"> {% endcomment %}
+        <a href="#">
           <i class='bx bx-user'></i>
-          <span class="links_name">Contacts</span>
+          <span class="links_name">Manage Users</span>
+        </a>
+      </li>
+      <li>
+        <a href="#">
+          <i class='bx bx-user'></i>
+          <span class="links_name">Borrowing Management</span>
         </a>
       </li>
       <li>
         <a href="#">
           <i class='bx bx-message'></i>
-          <span class="links_name">Messages</span>
+          <span class="links_name">Reports</span>
         </a>
       </li>
       <li>
         <a href="#">
           <i class='bx bx-cog'></i>
-          <span class="links_name">Setting</span>
+          <span class="links_name">Settings</span>
         </a>
       </li>
       <li class="log_out">
-        {% comment %} <a href="{% url 'logout' %}?next={% url 'login' %}"> {% endcomment %}
+        <a href="{% url 'logout' %}?next={% url 'login' %}">
           <i class='bx bx-log-out'></i>
           <span class="links_name">Log out</span>
         </a>
@@ -65,21 +80,17 @@
         <i class='bx bx-menu sidebarBtn'></i>
         <span class="dashboard">Dashboard</span>
       </div>
-      {% comment %} <div class="search-box">
-        <input type="text" placeholder="Search...">
-        <i class='bx bx-search'></i>
-      </div> {% endcomment %}
       <div class="profile-details">
-        <img src="/static/images/logo-1.png" alt="profile pic" style="border-radius: 20px;">
+        {% comment %} <img src="/static/images/logo-1.png" alt="profile pic" style="border-radius: 20px;"> {% endcomment %}
         <span class="admin_name"> {{user.username}}</span>
-        <i class='bx bx-chevron-down'></i>
+        {% comment %} <i class='bx bx-chevron-down'></i> {% endcomment %}
       </div>
     </nav>
     <div class="home-content">
       <div class="overview-boxes">
         <div class="box">
           <div class="right-side">
-            <div class="box-topic">Total Visitors</div>
+            <div class="box-topic">Total Students</div>
             <div class="number">40,876</div>
             <div class="indicator">
               <i class='bx bx-up-arrow-alt'></i>
@@ -89,7 +100,7 @@
         </div>
         <div class="box">
           <div class="right-side">
-            <div class="box-topic">Hiring Request</div>
+            <div class="box-topic">Total Books</div>
             <div class="number">38,876</div>
             <div class="indicator">
               <i class='bx bx-up-arrow-alt'></i>
@@ -99,8 +110,8 @@
         </div>
         <div class="box">
           <div class="right-side">
-            <div class="box-topic">Projects Completed</div>
-            <div class="number">$12,876</div>
+            <div class="box-topic">Borrowed Books</div>
+            <div class="number">12,876</div>
             <div class="indicator">
               <i class='bx bx-up-arrow-alt'></i>
               <span class="text">Up from yesterday</span>
@@ -109,7 +120,7 @@
         </div>
         <div class="box">
           <div class="right-side">
-            <div class="box-topic">Pending Projects</div>
+            <div class="box-topic">Available Books</div>
             <div class="number">11,086</div>
             <div class="indicator">
               <i class='bx bx-down-arrow-alt down'></i>
@@ -120,7 +131,7 @@
       </div>
       <div class="sales-boxes">
         <div class="recent-sales box">
-          <div class="title">Contact Messages</div>
+          <div class="title">Track Due Dates</div>
           <div class="sales-details">
             <table>
               <thead>
@@ -236,26 +247,26 @@
           </div>
         </div>
         <div class="top-sales box">
-          <div class="title">Top Invited Projects</div>
+          <div class="title">Recent Added Books</div>
           <ul class="top-sales-details">
             <li>
               <a href="#">
                 <img src="images/sunglasses.jpg" alt="">
-                <span class="product">Chatbot</span>
+                <span class="product">Lomolomo</span>
               </a>
               {% comment %} <span class="price">$1107</span> {% endcomment %}
             </li>
             <li>
               <a href="#">
                 <img src="images/jeans.jpg" alt="">
-                <span class="product">Vehicle Speed tracker </span>
+                <span class="product">Jua kali</span>
               </a>
               {% comment %} <span class="price">$1567</span> {% endcomment %}
             </li>
             <li>
               <a href="#">
                 <img src="images/nike.jpg" alt="">
-                <span class="product">Social Media Chat App</span>
+                <span class="product">Machine Learning</span>
               </a>
               {% comment %} <span class="price">$1234</span> {% endcomment %}
             </li>
